@@ -9,6 +9,7 @@ using namespace std::chrono;
 
 using std::vector, std::string;
 
+// my own implementation of complex numbers
 class Complex
 {
 public:
@@ -213,6 +214,8 @@ public:
     }
 };
 
+// remove all frequencies from the audio file that are less that minFrequency or greater than maxFrequency
+// This is an implementation of a bandpass filter
 void Filter(AudioFile<double> &audio, double minFrequency, double maxFrequency)
 {
     double seconds = audio.getLengthInSeconds();
@@ -241,6 +244,6 @@ int main(int argc, char **args)
 
     AudioFile<double> audioFile;
     audioFile.load("__audio__file__name");
-    Filter(audioFile, 50, 2000);
+    Filter(audioFile, 50, 2000); // filter audio file to only include frequencies between 50hz and 2000hz
     audioFile.save("__new__audio__file__name");
 }
